@@ -36,14 +36,14 @@
                         {% block header_navigation_links %}
                             <li>
                                 <a href="{{ path('blog_index') }}">
-                                    <i class="fa fa-home"></i> Anasayfa
+                                    <i class="glyphicon glyphicon-home"></i>  Anasayfa
                                 </a>
                             </li>
 
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li>
-                                    <a href="{{ path('admin_post_index') }}">
-                                        <i class="fa fa-lock"></i> Makale
+                                    <a href="{{ path('blog_index') }}">
+                                        <i class="glyphicon glyphicon-file"></i> Makale
                                     </a>
                                 </li>
                             {% endif %}
@@ -52,7 +52,13 @@
                         {% if app.user %}
                             <li>
                                 <a href="{{ path('security_logout') }}">
-                                    <i class="fa fa-sign-out"></i> Çıkış
+                                    <i class="glyphicon glyphicon-log-out"></i> Çıkış
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('security_login_form') }}">
+                                    <i class="glyphicon glyphicon-log-in"></i> Giriş
                                 </a>
                             </li>
                         {% endif %}
