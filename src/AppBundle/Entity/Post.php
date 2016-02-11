@@ -8,7 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
- * @ORM\Table(name="posts")
+ * @ORM\Table(name="posts",
+ *      indexes={
+ *          @ORM\Index(name="createdAt", columns={"createdAt"}),
+ *          @ORM\Index(name="isDeleted", columns={"isDeleted"})
+ *      }
+ * )
  */
 class Post
 {
@@ -58,6 +63,23 @@ class Post
     private $publishedAt;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
+     */
+    private $deletedAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isDeleted;
+
+    /**
      * @ORM\OneToMany(
      *      targetEntity="Comment",
      *      mappedBy="post",
@@ -73,7 +95,9 @@ class Post
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
+        $this->createdAt = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->isDeleted = false;
     }
     
     /**
@@ -195,6 +219,54 @@ class Post
     public function setPublishedAt(\DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param mixed $deletedAt
+     */
+    public function setDeletedAt(\DateTime $deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsDeleted()
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * @param mixed $isDeleted
+     */
+    public function setIsDeleted(\DateTime $isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
     }
 
     /**
