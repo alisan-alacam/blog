@@ -1,7 +1,7 @@
 blog
 ====
 
-Yapılacaklarlar
+Yapılacak Listesi
 ===
 
 - ~~Admin ve kullanıcı giriş alanı~~
