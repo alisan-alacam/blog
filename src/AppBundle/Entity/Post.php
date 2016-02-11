@@ -8,12 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
- * @ORM\Table(name="posts",
- *      indexes={
- *          @ORM\Index(name="createdAt", columns={"createdAt"}),
- *          @ORM\Index(name="isDeleted", columns={"isDeleted"})
- *      }
- * )
+ * @ORM\Table(name="posts")
  */
 class Post
 {
