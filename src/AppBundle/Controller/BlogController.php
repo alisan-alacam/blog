@@ -22,28 +22,18 @@ class BlogController extends Controller
      * @Route("/", name="blog_index", defaults={"page" = 1})
      * @Route("/page/{page}", name="blog_index_paginated", requirements={"page" : "\d+"})
      * @Cache(smaxage="10")
+     * @param $page
+     * @return Response
      */
     public function indexAction($page)
     {
+        $query = $this->getDoctrine()->getRepository('AppBundle:Post')->queryLatest();
 
-    }
+        $paginator = $this->get('knp_paginator');
+        $posts = $paginator->paginate($query, $page, Post::NUM_ITEMS);
 
-    /**
-     * @Route("/posts/{slug}", name="blog_post")
-     */
-    public function postShowAction(Post $post)
-    {
+        $posts->setUsedRoute('blog_index_paginated');
 
-    }
-
-    /**
-     * @Route("/comment/{postSlug}/new", name = "comment_new")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @Method("POST")
-     * @ParamConverter("post", options={"mapping": {"postSlug": "slug"}})
-     */
-    public function commentNewAction(Request $request, Post $post)
-    {
-
+        return $this->render('blog/index.html.twig', array('posts' => $posts));
     }
 }

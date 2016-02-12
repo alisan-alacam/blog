@@ -1,5 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-Anasayfa
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <p>
+                    Makaleler
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('blog_index') }}">
+                        <i class="fa fa-users"></i> Makaleler
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
