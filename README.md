@@ -16,6 +16,11 @@ Kurulum
 
 Aşağıdaki işlemleri sırasıyla takip ediniz.
 
+Bağımlıkları yüklemek için
+```cli
+composer install
+```
+
 Ubuntu ile nodejs kurulum
 
 ```cli
