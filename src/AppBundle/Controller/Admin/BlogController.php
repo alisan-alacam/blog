@@ -42,5 +42,35 @@ class BlogController extends Controller
      */
     public function newAction(Request $request)
     {
+        $post = new Post();
+
+        $post->setAuthorEmail($this->getUser()->getEmail());
+
+        $form = $this->createForm('AppBundle\Form\PostType', $post)
+            ->add('saveAndCreateNew', 'Symfony\Component\Form\Extension\Core\Type\SubmitType')
+        ;
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $post->setSlug($this->get('slugger')->slugify($post->getTitle()));
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->persist($post);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Makale başarıyla oluşturuldu');
+
+            if ($form->get('saveAndCreateNew')->isClicked()) {
+                return $this->redirectToRoute('admin_post_new');
+            }
+            return $this->redirectToRoute('admin_post_index');
+        }
+
+        return $this->render('admin/blog/new.html.twig', array(
+            'post' => $post,
+            'form' => $form->createView(),
+        ));
     }
 }
