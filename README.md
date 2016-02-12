@@ -9,4 +9,4 @@ Yapılacak Listesi
 - ~~Frontend için bootstrap ve jquery dahil edilmesi~~
 - Grunt / ~~bower~~ / browserify entegre edilmesi
 - ~~Blog linklerinin slug şeklinde oluşturulması~~
-- Tablo index lerinin kontrol edilmesi
+- ~~Tablo index lerinin kontrol edilmesi~~
