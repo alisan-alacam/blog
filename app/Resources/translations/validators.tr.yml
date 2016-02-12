@@ -1,0 +1,10 @@
+post:
+    too_short_content: Kısa içerik
+    blank_summary: Özet girin
+    blank_content: İçerik girin
+
+comment:
+    blank: Yorum boş
+    too_short: Yorum çok kısa
+    too_long: Yorum çok uzun
+    is_spam: Spam algılandı
