@@ -2,20 +2,6 @@
 
     $(document).ready(function () {
 
-        $('[data-toggle="datetimepicker"]').datetimepicker({
-            icons: {
-                time: 'glyphicon glyphicon-clock-o',
-                date: 'glyphicon glyphicon-calendar',
-                up: 'glyphicon glyphicon-chevron-up',
-                down: 'glyphicon glyphicon-chevron-down',
-                previous: 'glyphicon glyphicon-chevron-left',
-                next: 'glyphicon glyphicon-chevron-right',
-                today: 'glyphicon glyphicon-check-circle-o',
-                clear: 'glyphicon glyphicon-trash',
-                close: 'glyphicon glyphicon-remove'
-            }
-        });
-
         $(document).on('submit', 'form[data-confirmation]', function (event) {
             var $form = $(this),
                 $confirmModal = $('#confirmationModal');
