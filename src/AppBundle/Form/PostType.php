@@ -24,7 +24,11 @@ class PostType extends AbstractType
                 'attr' => array('rows' => 18)
             ))
             ->add('authorEmail', null, array('label' => 'Eposta'))
-            ->add('publishedAt', 'AppBundle\Form\Type\DateTimePickerType', array('label' => 'Yayın Tarihi'))
+            ->add('publishedAt', 'AppBundle\Form\Type\DateTimePickerType', array(
+                'label' => 'Yayın Tarihi',
+                'format' => 'dd.MM.yyyy HH:mm',
+                'attr' => array('data-toggle' => 'datetimepicker')
+            ))
         ;
     }
 
